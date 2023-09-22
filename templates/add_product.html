@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Product{% endblock %}
+{% block header %}Add Product{% endblock %}
+{% block content %}
+    <form method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br><br>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+        <label for="count">Count:</label>
+        <input type="number" id="count" name="count" required><br><br>
+
+        <input type="submit" value="Add Product">
+    </form>
+    <a href="{{ url_for('index') }}">Back to Product List</a>
+{% endblock %}

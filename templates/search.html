@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Products{% endblock %}
+{% block header %}Search Products{% endblock %}
+{% block content %}
+    <form method="POST">
+        <label for="search_term">Search Term:</label>
+        <input type="text" id="search_term" name="search_term" required>
+        <input type="submit" value="Search">
+    </form>
+    <div class="search-results">
+        <h2>Search Results:</h2>
+        <ul>
+            {% for product in products %}
+                <li>{{ product.title }} - Price: ${{ product.price }} - Count: {{ product.count }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
