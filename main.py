@@ -7,8 +7,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.secret_key = 'very_secret_key'
 
 db = SQLAlchemy(app)
-with app.app_context():
-    db.create_all()
 
 
 class Product(db.Model):
@@ -52,6 +50,11 @@ def search():
         products = []
 
     return render_template('search.html', products=products)
+
+
+@app.before_first_request
+def init():
+    db.create_all()
 
 
 if __name__ == '__main__':
